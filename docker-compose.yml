@@ -1,0 +1,8 @@
+version: "3.1"
+services:
+   docker-vps:
+      build: .
+      deploy:
+         replicas: 3 # scale to 3 instances
+      ports:
+         - "1000-1005:22" # expose ports 1000-1005 to the host
