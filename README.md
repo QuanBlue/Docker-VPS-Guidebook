@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="./../assets/docker-logo.png" alt="icon" width="200"></img>
+  <img src="./assets/docker-logo.png" alt="icon" width="200"></img>
   <br>
   <b>Create Docker VPS</b>
 </h1>
