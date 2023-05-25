@@ -1,4 +1,5 @@
 version: "3.1"
+
 services:
    docker-vps:
       build:
@@ -6,9 +7,16 @@ services:
          args:
             - USER=${USER:-docker_vps}
       privileged: true # run container in priviliged mode
+      networks:
+         - vps
       deploy:
          replicas: ${REPLICAS:-3} # scale to REPLICAS instances
       volumes:
          - "/var/run/docker.sock:/var/run/docker.sock" # mount the docker socket (necessary for docker in docker)
       ports:
          - "22"
+
+networks:
+   vps:
+      name: docker-vps-network
+      driver: bridge
