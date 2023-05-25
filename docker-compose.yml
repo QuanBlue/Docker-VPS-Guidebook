@@ -1,8 +1,14 @@
 version: "3.1"
 services:
    docker-vps:
-      build: .
+      build:
+         context: .
+         args:
+            - USER=${USER:-docker_vps}
+      privileged: true # run container in priviliged mode
       deploy:
-         replicas: 3 # scale to 3 instances
+         replicas: ${REPLICAS:-3} # scale to REPLICAS instances
+      volumes:
+         - "/var/run/docker.sock:/var/run/docker.sock" # mount the docker socket (necessary for docker in docker)
       ports:
-         - "1000-1005:22" # expose ports 1000-1005 to the host
+         - "${HOST_PORT:-1000-1010}:22" # expose ports range to the host

@@ -8,13 +8,52 @@
 
 <p align="center">
   <b>
-    <a href="#usage">Usage</a> •
+    <a href="#getting-start">Getting start</a> •
     <a href="#customize">Customize</a> •
+    <a href="#credits">Credits</a> •
     <a href="#license">License</a>
   </b>
 </p>
 
-## Usage
+## Getting start
+
+### Way 1: Using Docker
+
+You only create one docker vps instance by this way.
+
+```sh
+docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --privileged docker:dind sh
+```
+
+### Way 2: Using Docker-compose
+
+You can create multi docker vps instance and customize them by one command.
+
+#### Environment Variables
+
+To custom user, you need to add the following environment variables to your `.env` file in `/`:
+
+-  **App configs:** Create `.env` file in `./`
+
+   -  `USER`: user name of vps instance (default: `docker_vps`).
+   -  `REPLICAS`: number of vps instance (default: `3`).
+   -  `HOST_PORT`: host port range (default: `1000-1010`).
+      > **Note:** Host port range must be greater than or equal to the number of vps instance.
+
+   Example:
+
+   ```sh
+   # .env
+   USER="docker"
+   REPLICAS=3
+   HOST_PORT=1000-1010
+   ```
+
+You can also check out the file `.env.example` to see all required environment variables.
+
+> **Note**: If you want to use this example environment, you need to rename it to `.env`.
+
+#### Run locally
 
 Build containers
 
@@ -75,7 +114,7 @@ ef55eb1d27aa:~$
 
 ```
 
-## Customize
+#### Customize
 
 Add or change user - check it in `Dockerfile`
 
