@@ -36,8 +36,6 @@ To custom user, you need to add the following environment variables to your `.en
 
    -  `USER`: user name of vps instance (default: `docker_vps`).
    -  `REPLICAS`: number of vps instance (default: `3`).
-   -  `HOST_PORT`: host port range (default: `1000-1010`).
-      > **Note:** Host port range must be greater than or equal to the number of vps instance.
 
    Example:
 
@@ -45,7 +43,6 @@ To custom user, you need to add the following environment variables to your `.en
    # .env
    USER="docker"
    REPLICAS=3
-   HOST_PORT=1000-1010
    ```
 
 You can also check out the file `.env.example` to see all required environment variables.
@@ -72,11 +69,11 @@ $ docker-compose ps
 
          Name               Command       State               Ports
 --------------------------------------------------------------------------------
-dockervps_docker-vps_1   /entrypoint.sh   Up      0.0.0.0:1001->22/tcp,
+dockervps_docker-vps_1   /entrypoint.sh   Up      0.0.0.0:42673->22/tcp,
                                                   2375/tcp, 2376/tcp
-dockervps_docker-vps_2   /entrypoint.sh   Up      0.0.0.0:1000->22/tcp,
+dockervps_docker-vps_2   /entrypoint.sh   Up      0.0.0.0:33283->22/tcp,
                                                   2375/tcp, 2376/tcp
-dockervps_docker-vps_3   /entrypoint.sh   Up      0.0.0.0:1002->22/tcp,
+dockervps_docker-vps_3   /entrypoint.sh   Up      0.0.0.0:46007->22/tcp,
                                                   2375/tcp, 2376/tcp
 ```
 
@@ -97,8 +94,8 @@ docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 # Connect to container by ssh
 # ssh [user]@[docker network ip] -p [container port]
 # user: quanblue - password: 123
-$ ssh quanblue@172.17.0.1 -p 1000
-quanblue@172.17.0.1's password:
+$ ssh quanblue@172.17.0.1 -p 42673
+quanblue@172.17.0.1s password:
 Welcome to Alpine!
 
 The Alpine Wiki contains a large amount of how-to guides and general
@@ -109,8 +106,12 @@ You can setup the system with the command: setup-alpine
 
 You may change this message by editing /etc/motd.
 
-ef55eb1d27aa:~$
+# enter super user, enter password: 123
+ef55eb1d27aa:~$ doas su
+doas (quanblue@099e3af2dace) password:
 
+# success
+/home/quanblue #
 ```
 
 ## Credits
