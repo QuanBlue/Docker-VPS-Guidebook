@@ -9,7 +9,6 @@
 <p align="center">
   <b>
     <a href="#getting-start">Getting start</a> •
-    <a href="#customize">Customize</a> •
     <a href="#credits">Credits</a> •
     <a href="#license">License</a>
   </b>
@@ -114,32 +113,12 @@ ef55eb1d27aa:~$
 
 ```
 
-#### Customize
+## Credits
 
-Add or change user - check it in `Dockerfile`
-
-```dockerfile
-# find this line and change it properties
-RUN echo -n 'quanblue:123' | chpasswd
-
-# change to
-RUN echo -n '<user>:<password>' | chpasswd
-```
-
-Change number of vps instance
-
-```yml
-# find this line and change it properties
-replicas: 3
-ports:
-  - "1000-1005:22"
-
-# change to
-replicas: <number_of_instance>
-ports:
-  - "<host_port_range>:22"
-
-```
+-  [Docker](https://www.docker.com/)
+-  [Docker-compose](https://docs.docker.com/compose/)
+-  [Docker-in-docker](https://hub.docker.com/_/docker)
+-  [Alpine](https://alpinelinux.org/)
 
 ## License
 
