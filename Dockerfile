@@ -22,6 +22,10 @@ RUN adduser -h /home/${USER} -s /bin/sh -D ${USER}
 RUN echo "${USER}:123" | chpasswd 
 RUN echo "permit ${USER} as root" > /etc/doas.d/doas.conf
 
+# add USER to Docker group to avoid typing sudo
+RUN usermod -aG docker ${USER}
+RUN su - ${USER}
+
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
