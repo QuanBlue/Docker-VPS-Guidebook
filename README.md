@@ -4,126 +4,120 @@
   <b>Create Docker VPS</b>
 </h1>
 
-<p align="center">Using Docker-compose to create Docker VPS.</p>
+<p align="center">Helping you create Docker VPS in order to run Docker Swarm, Kubernetes, ...</p>
+
+<!-- Badges -->
+<p align="center">
+  <a href="https://github.com/QuanBlue/Docker-VPS/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/QuanBlue/Docker-VPS" alt="contributors" />
+  </a>
+  <a href="">
+    <img src="https://img.shields.io/github/last-commit/QuanBlue/Docker-VPS" alt="last update" />
+  </a>
+  <a href="https://github.com/QuanBlue/Docker-VPS/network/members">
+    <img src="https://img.shields.io/github/forks/QuanBlue/Docker-VPS" alt="forks" />
+  </a>
+  <a href="https://github.com/QuanBlue/Docker-VPS/stargazers">
+    <img src="https://img.shields.io/github/stars/QuanBlue/Docker-VPS" alt="stars" />
+  </a>
+  <a href="https://github.com/QuanBlue/Docker-VPS/issues/">
+    <img src="https://img.shields.io/github/issues/QuanBlue/Docker-VPS" alt="open issues" />
+  </a>
+  <a href="https://github.com/QuanBlue/Docker-VPS/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/QuanBlue/Docker-VPS.svg" alt="license" />
+  </a>
+</p>
 
 <p align="center">
   <b>
-    <a href="#getting-start">Getting start</a> •
-    <a href="#credits">Credits</a> •
-    <a href="#license">License</a>
+    <a href="https://github.com/QuanBlue/Docker-VPS">Documentation</a> •
+    <a href="https://github.com/QuanBlue/Docker-VPS/issues/">Report Bug</a> •
+    <a href="https://github.com/QuanBlue/Docker-VPS/issues/">Request Feature</a>
   </b>
 </p>
+<br/>
+<details open>
+<summary>Table of Contents</summary>
 
-## Getting start
+-  [Getting Started](#getting-started)
+   -  [Prerequisites](#prerequisites)
+-  [Usage](#usage)
+-  [Roadmap](#roadmap)
+-  [Contributors](#contributors)
+-  [Credits](#credits)
+-  [License](#license)
+-  [Related Projects](#related-projects)
+</details>
 
-### Way 1: Using Docker
+## Getting Started
 
-You only create one docker vps instance by this way.
+### Prerequisites
 
-```sh
-docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock --privileged docker:dind sh
-```
+Before proceeding with the installation and usage of this project, ensure that you have the following prerequisites in place:
 
-### Way 2: Using Docker-compose
+-  **Docker Engine:** Docker provides a consistent and portable environment for running applications in containers. Install [here](https://www.docker.com/get-started/).
+-  **Network Connectivity:** Docker requires network connectivity to download images, communicate with containers, and access external resources.
 
-You can create multi docker vps instance and customize them by one command.
+## Usage
 
-#### Environment Variables
-
-To custom user, you need to add the following environment variables to your `.env` file in `/`:
-
--  **App configs:** Create `.env` file in `./`
-
-   -  `USER`: user name of vps instance (default: `docker_vps`).
-   -  `REPLICAS`: number of vps instance (default: `3`).
-
-   Example:
-
-   ```sh
-   # .env
-   USER="docker"
-   REPLICAS=3
-   ```
-
-You can also check out the file `.env.example` to see all required environment variables.
-
-> **Note**: If you want to use this example environment, you need to rename it to `.env`.
-
-#### Run locally
-
-Build containers
+Start the init DinD container
 
 ```sh
-$ docker-compose up -d
-
-WARNING: The "docker-vps" service specifies a port on the host. If multiple containers for this service are created on a single host, the port will clash.
-Recreating dockervps_docker-vps_1 ... done
-Recreating dockervps_docker-vps_2 ... done
-Recreating dockervps_docker-vps_3 ... done
+docker run -d --privileged --name <container_1> docker:dind
 ```
 
-Check created containers
+Initialize a Docker Swarm on the first DinD container:
 
 ```sh
-$ docker-compose ps
-
-         Name               Command       State               Ports
---------------------------------------------------------------------------------
-dockervps_docker-vps_1   /entrypoint.sh   Up      0.0.0.0:42673->22/tcp,
-                                                  2375/tcp, 2376/tcp
-dockervps_docker-vps_2   /entrypoint.sh   Up      0.0.0.0:33283->22/tcp,
-                                                  2375/tcp, 2376/tcp
-dockervps_docker-vps_3   /entrypoint.sh   Up      0.0.0.0:46007->22/tcp,
-                                                  2375/tcp, 2376/tcp
+docker exec -it <container_1> docker swarm init
 ```
 
-Connect to container
+> **Note:**
+>
+> -  Obtain the join token from the output of the previous command. It should look similar to:  
+>    `docker swarm join --token <token> <manager-ip>:<manager-port>`
+> -  If you forget the join token, you can get it by running the following command on the manager node: `docker swarm join-token worker`
+
+Start additional DinD containers and join them to the Swarm
 
 ```sh
-# get docker network ip
-$ ifconfig
-docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
-        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
-        ether 02:42:b0:58:cb:c8  txqueuelen 0  (Ethernet)
-        RX packets 0  bytes 0 (0.0 B)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 0  bytes 0 (0.0 B)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-...
+# Start additional DinD containers
+docker run -d --privileged --name <container_n> docker:dind
 
-# Connect to container by ssh
-# ssh [user]@[docker network ip] -p [container port]
-# user: quanblue - password: 123
-$ ssh quanblue@172.17.0.1 -p 42673
-quanblue@172.17.0.1s password:
-Welcome to Alpine!
-
-The Alpine Wiki contains a large amount of how-to guides and general
-information about administrating Alpine systems.
-See <https://wiki.alpinelinux.org/>.
-
-You can setup the system with the command: setup-alpine
-
-You may change this message by editing /etc/motd.
-
-# enter super user, enter password: 123
-ef55eb1d27aa:~$ doas su
-doas (quanblue@099e3af2dace) password:
-
-# success
-/home/quanblue #
+# Join swarm
+docker exec -it <container_n> docker swarm join --token <token> <manager-ip>:<manager-port>
 ```
+
+> **Note:** If you want to attach and control this container, you can use the following command:
+> `docker exec -it <container_n> /bin/sh`
+
+## Roadmap
+
+Create Docker VPS
+
+-  [ ] Using Docker-compose
+-  [ ] Using Virtual machine (VirtualBox)
+
+## Contributors
+
+<a href="https://github.com/QuanBlue/Linux-Bootstrap/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=QuanBlue/Linux-Bootstrap" />
+</a>
+
+Contributions are always welcome!
 
 ## Credits
 
 -  [Docker](https://www.docker.com/)
--  [Docker-compose](https://docs.docker.com/compose/)
 -  [Docker-in-docker](https://hub.docker.com/_/docker)
--  [Alpine](https://alpinelinux.org/)
 
 ## License
 
 Distributed under the MIT License. See <a href="../LICENSE">`LICENSE`</a> for more information.
+
+## Related Projects
+
+-  <u>[**Docker practice lab**](https://github.com/QuanBlue/Docker-practice-lab)</u>: Practice Docker with Docker, Docker Swarm,... from beginner to advanced.
 
 ---
 
