@@ -37,7 +37,7 @@
 </p>
 <br/>
 <details open>
-<summary>Table of Contents</summary>
+<summary><b>Table of Contents</b></summary>
 
 -  [Getting Started](#getting-started)
    -  [Prerequisites](#prerequisites)
