@@ -39,27 +39,27 @@
 <details open>
 <summary><b>Table of Contents</b></summary>
 
--  [Getting Started](#getting-started)
-   -  [Prerequisites](#prerequisites)
--  [Usage](#usage)
--  [Practice](#practice)
--  [Roadmap](#roadmap)
--  [Contributors](#contributors)
--  [Credits](#credits)
--  [License](#license)
--  [Related Projects](#related-projects)
+-  [Getting Started](#toolbox-getting-started)
+   -  [Prerequisites](#pushpin-prerequisites)
+-  [Usage](#rocket-usage)
+-  [Practice](#building_construction-practice)
+-  [Roadmap](#world_map-roadmap)
+-  [Contributors](#busts_in_silhouette-contributors)
+-  [Credits](#sparkles-credits)
+-  [License](#scroll-license)
+-  [Related Projects](#link-related-projects)
 </details>
 
-## Getting Started
+## :toolbox: Getting Started
 
-### Prerequisites
+### :pushpin: Prerequisites
 
 Before proceeding with the installation and usage of this project, ensure that you have the following prerequisites in place:
 
 -  **Docker Engine:** Docker provides a consistent and portable environment for running applications in containers. Install [here](https://www.docker.com/get-started/).
 -  **Network Connectivity:** Docker requires network connectivity to download images, communicate with containers, and access external resources.
 
-## Usage
+## :rocket: Usage
 
 Start the init DinD container
 
@@ -92,11 +92,11 @@ docker exec -it <container_n> docker swarm join --token <token> <manager-ip>:<ma
 > **Note:** If you want to attach and control this container, you can use the following command:
 > `docker exec -it <container_n> /bin/sh`
 
-## Practice
+## :building_construction: Practice
 
 You can you can refer to [Docker Swarm lab](https://github.com/QuanBlue/Docker-practice-lab/tree/master/Intermediate/docker%20swarm/Lab%20%231%3A%20Init%20and%20Manage%20Docker%20Swarm) to create Docker Swarm.
 
-## Roadmap
+## :world_map: Roadmap
 
 Create Docker VPS
 
@@ -104,7 +104,7 @@ Create Docker VPS
 -  [ ] Using Docker-compose
 -  [ ] Using Virtual machine (VirtualBox)
 
-## Contributors
+## :busts_in_silhouette: Contributors
 
 <a href="https://github.com/QuanBlue/Linux-Bootstrap/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=QuanBlue/Linux-Bootstrap" />
@@ -112,16 +112,16 @@ Create Docker VPS
 
 Contributions are always welcome!
 
-## Credits
+## :sparkles: Credits
 
 -  [Docker](https://www.docker.com/)
 -  [Docker-in-docker](https://hub.docker.com/_/docker)
 
-## License
+## :scroll: License
 
 Distributed under the MIT License. See <a href="../LICENSE">`LICENSE`</a> for more information.
 
-## Related Projects
+## :link: Related Projects
 
 -  <u>[**Docker practice lab**](https://github.com/QuanBlue/Docker-practice-lab)</u>: Practice Docker with Docker, Docker Swarm,... from beginner to advanced.
 
