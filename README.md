@@ -50,16 +50,16 @@
 -  [Related Projects](#link-related-projects)
 </details>
 
-## :toolbox: Getting Started
+# :toolbox: Getting Started
 
-### :pushpin: Prerequisites
+## :pushpin: Prerequisites
 
 Before proceeding with the installation and usage of this project, ensure that you have the following prerequisites in place:
 
 -  **Docker Engine:** Docker provides a consistent and portable environment for running applications in containers. Install [here](https://www.docker.com/get-started/).
 -  **Network Connectivity:** Docker requires network connectivity to download images, communicate with containers, and access external resources.
 
-## :rocket: Usage
+# :rocket: Usage
 
 Start the init DinD container
 
@@ -92,11 +92,11 @@ docker exec -it <container_n> docker swarm join --token <token> <manager-ip>:<ma
 > **Note:** If you want to attach and control this container, you can use the following command:
 > `docker exec -it <container_n> /bin/sh`
 
-## :building_construction: Practice
+# :building_construction: Practice
 
 You can you can refer to [Docker Swarm lab](https://github.com/QuanBlue/Docker-practice-lab/tree/master/Intermediate/docker%20swarm/Lab%20%231%3A%20Init%20and%20Manage%20Docker%20Swarm) to create Docker Swarm.
 
-## :world_map: Roadmap
+# :world_map: Roadmap
 
 Create Docker VPS
 
@@ -104,7 +104,7 @@ Create Docker VPS
 -  [ ] Using Docker-compose
 -  [ ] Using Virtual machine (VirtualBox)
 
-## :busts_in_silhouette: Contributors
+# :busts_in_silhouette: Contributors
 
 <a href="https://github.com/QuanBlue/Linux-Bootstrap/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=QuanBlue/Linux-Bootstrap" />
@@ -112,16 +112,16 @@ Create Docker VPS
 
 Contributions are always welcome!
 
-## :sparkles: Credits
+# :sparkles: Credits
 
 -  [Docker](https://www.docker.com/)
 -  [Docker-in-docker](https://hub.docker.com/_/docker)
 
-## :scroll: License
+# :scroll: License
 
 Distributed under the MIT License. See <a href="../LICENSE">`LICENSE`</a> for more information.
 
-## :link: Related Projects
+# :link: Related Projects
 
 -  <u>[**Docker practice lab**](https://github.com/QuanBlue/Docker-practice-lab)</u>: Practice Docker with Docker, Docker Swarm,... from beginner to advanced.
 
