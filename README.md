@@ -42,6 +42,7 @@
 -  [Getting Started](#getting-started)
    -  [Prerequisites](#prerequisites)
 -  [Usage](#usage)
+-  [Practice](#practice)
 -  [Roadmap](#roadmap)
 -  [Contributors](#contributors)
 -  [Credits](#credits)
@@ -63,7 +64,7 @@ Before proceeding with the installation and usage of this project, ensure that y
 Start the init DinD container
 
 ```sh
-docker run -d --privileged --name <container_1> docker:dind
+docker run -d --privileged --hostname <hostname_1> --name <container_1> docker:dind
 ```
 
 Initialize a Docker Swarm on the first DinD container:
@@ -82,7 +83,7 @@ Start additional DinD containers and join them to the Swarm
 
 ```sh
 # Start additional DinD containers
-docker run -d --privileged --name <container_n> docker:dind
+docker run -d --privileged --hostname <hostname_n> --name <container_n> docker:dind
 
 # Join swarm
 docker exec -it <container_n> docker swarm join --token <token> <manager-ip>:<manager-port>
@@ -91,10 +92,15 @@ docker exec -it <container_n> docker swarm join --token <token> <manager-ip>:<ma
 > **Note:** If you want to attach and control this container, you can use the following command:
 > `docker exec -it <container_n> /bin/sh`
 
+## Practice
+
+You can you can refer to [Docker Swarm lab](https://github.com/QuanBlue/Docker-practice-lab/tree/master/Intermediate/docker%20swarm/Lab%20%231%3A%20Init%20and%20Manage%20Docker%20Swarm) to create Docker Swarm.
+
 ## Roadmap
 
 Create Docker VPS
 
+-  [ ] Using Shell script to auto create swarm
 -  [ ] Using Docker-compose
 -  [ ] Using Virtual machine (VirtualBox)
 
