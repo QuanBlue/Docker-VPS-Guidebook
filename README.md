@@ -1,7 +1,7 @@
 <h1 align="center">
   <img src="./assets/docker-logo.png" alt="icon" width="200"></img>
   <br>
-  <b>Create Docker VPS</b>
+  <b>Docker VPS - Docker Swarm</b>
 </h1>
 
 <p align="center">Helping you create Docker VPS in order to run Docker Swarm, Kubernetes, ...</p>
@@ -41,7 +41,12 @@
 
 -  [Getting Started](#toolbox-getting-started)
    -  [Prerequisites](#pushpin-prerequisites)
+   -  [Environment Variables](#key-environment-variables)
 -  [Usage](#rocket-usage)
+   -  [Create Docker VPS](#desktop_computer-create-docker-vps)
+   -  [Create Docker Swarm](#chains-create-docker-swarm)
+      -  [Way 1: Using Shell script to auto create `Swarm`](#way-1-using-shell-script-to-auto-create-swarm)
+      -  [Way 2: Manually create `Swarm`](#way-2-manually-create-swarm)
 -  [Practice](#building_construction-practice)
 -  [Roadmap](#world_map-roadmap)
 -  [Contributors](#busts_in_silhouette-contributors)
@@ -59,7 +64,42 @@ Before proceeding with the installation and usage of this project, ensure that y
 -  **Docker Engine:** Docker provides a consistent and portable environment for running applications in containers. Install [here](https://www.docker.com/get-started/).
 -  **Network Connectivity:** Docker requires network connectivity to download images, communicate with containers, and access external resources.
 
+## :key: Environment Variables
+
+If you want to auto create Docker Swarm by [this way](#way-1-using-shell-script-to-auto-create-swarm), you need to add the following environment variables to your `.env` file in `/`:
+
+-  **App configs:** Create `.env` file in `./`
+
+   -  `NUMBER_OF_WORKERS`: number of workers in Docker Swarm. Default is `2`.
+
+   Example:
+
+   ```sh
+   # .env
+   NUMBER_OF_WORKERS=2
+   ```
+
+You can also check out the file `.env.example` to see all required environment variables.
+
+> **Note**: If you want to use this example environment, you need to rename it to `.env`.
+
 # :rocket: Usage
+
+## :desktop_computer: Create Docker VPS
+
+```sh
+docker run -d --privileged --hostname <hostname> --name <container_name> docker:dind
+```
+
+## :chains: Create Docker Swarm
+
+### Way 1: Using Shell script to auto create `Swarm`
+
+```sh
+bash bootstrap.sh
+```
+
+### Way 2: Manually create `Swarm`
 
 Start the init DinD container
 
@@ -98,11 +138,12 @@ You can you can refer to [Docker Swarm lab](https://github.com/QuanBlue/Docker-p
 
 # :world_map: Roadmap
 
-Create Docker VPS
-
--  [ ] Using Shell script to auto create swarm
--  [ ] Using Docker-compose
--  [ ] Using Virtual machine (VirtualBox)
+-  [x] Create Docker VPS
+-  [ ] Create Docker Swarm
+   -  [x] Using Shell script
+   -  [x] Manually
+   -  [ ] Using Docker-compose
+   -  [ ] Using Virtual machine (VirtualBox)
 
 # :busts_in_silhouette: Contributors
 
@@ -116,6 +157,7 @@ Contributions are always welcome!
 
 -  [Docker](https://www.docker.com/)
 -  [Docker-in-docker](https://hub.docker.com/_/docker)
+-  Emojis are taken from [here](https://github.com/arvida/emoji-cheat-sheet.com)
 
 # :scroll: License
 
