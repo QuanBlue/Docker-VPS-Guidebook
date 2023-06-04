@@ -66,7 +66,7 @@ Before proceeding with the installation and usage of this project, ensure that y
 
 ## :key: Environment Variables
 
-If you want to auto create Docker Swarm by [this way](#way-1-using-shell-script-to-auto-create-swarm), you need to add the following environment variables to your `.env` file in `/`:
+**If you want to auto create Docker Swarm** by [this way](#way-1-using-shell-script-to-auto-create-swarm), you need to add the following environment variables to your `.env` file in `/`:
 
 -  **App configs:** Create `.env` file in `./`
 
@@ -139,11 +139,9 @@ You can you can refer to [Docker Swarm lab](https://github.com/QuanBlue/Docker-p
 # :world_map: Roadmap
 
 -  [x] Create Docker VPS
--  [ ] Create Docker Swarm
+-  [x] Create Docker Swarm
    -  [x] Using Shell script
    -  [x] Manually
-   -  [ ] Using Docker-compose
-   -  [ ] Using Virtual machine (VirtualBox)
 
 # :busts_in_silhouette: Contributors
 
