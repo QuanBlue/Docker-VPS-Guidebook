@@ -134,7 +134,7 @@ docker exec -it <container_n> docker swarm join --token <token> <manager-ip>:<ma
 
 # :building_construction: Practice
 
-You can you can refer to [Docker Swarm lab](https://github.com/QuanBlue/Docker-practice-lab/tree/master/Intermediate/docker%20swarm/Lab%20%231%3A%20Init%20and%20Manage%20Docker%20Swarm) to create Docker Swarm.
+You can you can refer to [Docker Swarm lab](https://github.com/QuanBlue/Docker-practice-lab/tree/master/Intermediate/2.%20docker%20swarm/Lab%20%231%3A%20Init%20and%20Manage%20Docker%20Swarm) to create Docker Swarm.
 
 # :world_map: Roadmap
 
