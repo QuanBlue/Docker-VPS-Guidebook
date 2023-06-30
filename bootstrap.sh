@@ -8,6 +8,7 @@ source .env
 
 MANAGER=manager
 NUMBER_OF_WORKERS=${NUMBER_OF_WORKERS:-2}
+VISUALIZER_PORT=${VISUALIZER_PORT:-8080}
 
 # Function to print messages in pretty format
 info() {
@@ -44,6 +45,12 @@ for ((i = 1; i <= $NUMBER_OF_WORKERS; i++)); do
    docker rm -f worker${i}
 done
 
+# Pull image
+info header "Pull image docker:dind"
+info "Pulling..."
+docker pull docker:dind
+info "Complete!"
+
 # Create containers
 info header "Create containers"
 info "Create (${MANAGER}): "
@@ -58,13 +65,24 @@ done
 info header "Wait for Docker-in-Docker container to start"
 info "Watting..."
 sleep 5
-info "complete!"
+info "Complete!"
 echo ""
 
 # Init Swarm
 info header "Create Swarm"
 info "Init Swarm: "
 docker exec -it $MANAGER docker swarm init
+
+# Create service Visualizer
+info header "Create Visualizer service"
+info "Installing..."
+docker exec -it $MANAGER docker service create \
+   --name=visualizer \
+   --publish=${VISUALIZER_PORT}:8080/tcp \
+   --constraint=node.role==manager \
+   --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+   dockersamples/visualizer
+info "Complete!"
 
 # Get worker join-token
 JOIN_TOKEN=$(trim $(docker exec -it $MANAGER docker swarm join-token -q worker))
