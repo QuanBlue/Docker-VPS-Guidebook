@@ -4,7 +4,7 @@
   <b>Docker Swarm Generator</b>
 </h1>
 
-<p align="center">Helping you create Docker VPS in order to run Docker Swarm, Kubernetes, ...</p>
+<p align="center">Automatically create Docker Swarm with a Manager and multiple Workers</p>
 
 <!-- Badges -->
 <p align="center">
