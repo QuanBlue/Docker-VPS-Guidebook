@@ -1,60 +1,60 @@
 <h1 align="center">
   <img src="./assets/docker-logo.png" alt="icon" width="200"></img>
   <br>
-  <b>Docker VPS - Docker Swarm</b>
+  <b>Docker Swarm Generator</b>
 </h1>
 
 <p align="center">Helping you create Docker VPS in order to run Docker Swarm, Kubernetes, ...</p>
 
 <!-- Badges -->
 <p align="center">
-  <a href="https://github.com/QuanBlue/Docker-VPS/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/QuanBlue/Docker-VPS" alt="contributors" />
+  <a href="https://github.com/QuanBlue/docker-swarm-generator/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/QuanBlue/docker-swarm-generator" alt="contributors" />
   </a>
   <a href="">
-    <img src="https://img.shields.io/github/last-commit/QuanBlue/Docker-VPS" alt="last update" />
+    <img src="https://img.shields.io/github/last-commit/QuanBlue/docker-swarm-generator" alt="last update" />
   </a>
-  <a href="https://github.com/QuanBlue/Docker-VPS/network/members">
-    <img src="https://img.shields.io/github/forks/QuanBlue/Docker-VPS" alt="forks" />
+  <a href="https://github.com/QuanBlue/docker-swarm-generator/network/members">
+    <img src="https://img.shields.io/github/forks/QuanBlue/docker-swarm-generator" alt="forks" />
   </a>
-  <a href="https://github.com/QuanBlue/Docker-VPS/stargazers">
-    <img src="https://img.shields.io/github/stars/QuanBlue/Docker-VPS" alt="stars" />
+  <a href="https://github.com/QuanBlue/docker-swarm-generator/stargazers">
+    <img src="https://img.shields.io/github/stars/QuanBlue/docker-swarm-generator" alt="stars" />
   </a>
-  <a href="https://github.com/QuanBlue/Docker-VPS/issues/">
-    <img src="https://img.shields.io/github/issues/QuanBlue/Docker-VPS" alt="open issues" />
+  <a href="https://github.com/QuanBlue/docker-swarm-generator/issues/">
+    <img src="https://img.shields.io/github/issues/QuanBlue/docker-swarm-generator" alt="open issues" />
   </a>
-  <a href="https://github.com/QuanBlue/Docker-VPS/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/QuanBlue/Docker-VPS.svg" alt="license" />
+  <a href="https://github.com/QuanBlue/docker-swarm-generator/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/QuanBlue/docker-swarm-generator.svg" alt="license" />
   </a>
 </p>
 
 <p align="center">
   <b>
-    <a href="https://github.com/QuanBlue/Docker-VPS">Documentation</a> •
-    <a href="https://github.com/QuanBlue/Docker-VPS/issues/">Report Bug</a> •
-    <a href="https://github.com/QuanBlue/Docker-VPS/issues/">Request Feature</a>
+    <a href="https://github.com/QuanBlue/docker-swarm-generator">Documentation</a> •
+    <a href="https://github.com/QuanBlue/docker-swarm-generator/issues/">Report Bug</a> •
+    <a href="https://github.com/QuanBlue/docker-swarm-generator/issues/">Request Feature</a>
   </b>
 </p>
 <br/>
 <details open>
 <summary><b>Table of Contents</b></summary>
 
--  [:toolbox: Getting Started](#toolbox-getting-started)
+-  [Getting Started](#toolbox-getting-started)
    -  [Prerequisites](#prerequisites)
    -  [Environment Variables](#environment-variables)
--  [:rocket: Usage](#rocket-usage)
+-  [Usage](#rocket-usage)
    -  [Create Docker VPS](#create-docker-vps)
    -  [Create Docker Swarm](#create-docker-swarm)
       -  [Create Swarm](#create-swarm)
          -  [Way 1: Using Shell script to auto create `Swarm`](#way-1-using-shell-script-to-auto-create-swarm)
          -  [Way 2: Manually create `Swarm`](#way-2-manually-create-swarm)
       -  [Visualize Swarm](#visualize-swarm)
--  [:building_construction: Practice](#building_construction-practice)
--  [:world_map: Roadmap](#world_map-roadmap)
--  [:busts_in_silhouette: Contributors](#busts_in_silhouette-contributors)
--  [:sparkles: Credits](#sparkles-credits)
--  [:scroll: License](#scroll-license)
--  [:link: Related Projects](#link-related-projects)
+-  [Practice](#building_construction-practice)
+-  [Roadmap](#world_map-roadmap)
+-  [Contributors](#busts_in_silhouette-contributors)
+-  [Credits](#sparkles-credits)
+-  [License](#scroll-license)
+-  [Related Projects](#link-related-projects)
 </details>
 
 # :toolbox: Getting Started
