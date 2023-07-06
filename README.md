@@ -80,6 +80,7 @@ Before proceeding with the installation and usage of this project, ensure that y
    ```sh
    # .env
    NUMBER_OF_WORKERS=2
+   VISUALIZER_PORT=8080
    ```
 
 You can also check out the file `.env.example` to see all required environment variables.
